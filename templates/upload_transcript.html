@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debate Feedback</title>
+</head>
+<body>
+    <h1>Upload Transcript for Feedback</h1>
+    <form method="post">
+        <textarea name="transcript" placeholder="Paste transcript here..." rows="10" cols="50"></textarea><br>
+        <select name="role">
+            <option value="PM">Prime Minister</option>
+            <option value="LO">Leader of Opposition</option>
+            <option value="MG">Member of Government</option>
+            <option value="MO">Member of Opposition</option>
+        </select><br>
+        <button type="submit">Get Feedback</button>
+    </form>
+    {% if feedback %}
+        <h2>AI Feedback</h2>
+        <p>{{ feedback }}</p>
+    {% endif %}
+</body>
+</html>
