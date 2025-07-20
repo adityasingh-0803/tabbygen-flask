@@ -1,14 +1,10 @@
 from flask import Flask, render_template, request
-import ollama  # Replace with openai if using GPT API
 
 app = Flask(__name__)
 
+# Dummy feedback generator
 def generate_feedback(transcript, role):
-    prompt = f"You are a debate coach. Give personalized feedback to a {role} speaker based on this speech:\n{transcript}\nFocus on logic, clarity, and persuasiveness."
-    response = ollama.chat(model='mistral', messages=[
-        {"role": "user", "content": prompt}
-    ])
-    return response['message']['content']
+    return f"[Demo] Feedback for {role}:\nGreat use of structure and tone. Improve clarity in your second argument. Try summarizing stronger."
 
 @app.route('/', methods=['GET', 'POST'])
 def feedback_view():
