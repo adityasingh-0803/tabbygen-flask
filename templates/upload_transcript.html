@@ -1,29 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Debate Feedback</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Debate AI Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .feedback-box {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 6px solid #4CAF50;
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Upload Transcript for Feedback</h1>
-        <form method="post">
-            <textarea name="transcript" placeholder="Paste transcript here..." rows="10"></textarea>
-            <select name="role">
-                <option value="PM">Prime Minister</option>
-                <option value="LO">Leader of Opposition</option>
-                <option value="MG">Member of Government</option>
-                <option value="MO">Member of Opposition</option>
-            </select>
-            <button type="submit">Get Feedback</button>
-        </form>
+    <h1>Get AI Feedback on Your Debate Speech</h1>
+    <form method="post">
+        <label for="transcript">Paste Transcript:</label>
+        <textarea name="transcript" rows="8" required></textarea>
 
-        {% if feedback %}
-        <div class="feedback-box">
-            <h2>AI Feedback:</h2>
-            <p>{{ feedback }}</p>
-        </div>
-        {% endif %}
+        <label for="role">Select Speaker Role:</label>
+        <select name="role" required>
+            <option value="PM">Prime Minister (PM)</option>
+            <option value="LO">Leader of Opposition (LO)</option>
+            <option value="MG">Member of Government (MG)</option>
+            <option value="MO">Member of Opposition (MO)</option>
+        </select>
+
+        <button type="submit">Get Feedback</button>
+    </form>
+
+    {% if feedback %}
+    <div class="feedback-box">
+        <h2>AI Feedback:</h2>
+        <p>{{ feedback }}</p>
     </div>
+    {% endif %}
 </body>
 </html>
